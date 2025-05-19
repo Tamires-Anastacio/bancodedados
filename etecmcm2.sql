@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Maio-2025 às 17:38
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.2
+-- Tempo de geração: 19/05/2025 às 22:58
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,16 +26,16 @@ USE `etecmcm2`;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categorias`
+-- Estrutura para tabela `categorias`
 --
 
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
   `nome_cat` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `categorias`
+-- Despejando dados para a tabela `categorias`
 --
 
 INSERT INTO `categorias` (`id_categoria`, `nome_cat`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `categorias` (`id_categoria`, `nome_cat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos`
+-- Estrutura para tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -59,27 +59,63 @@ CREATE TABLE `produtos` (
   `quant` int(11) DEFAULT NULL,
   `marca` varchar(255) DEFAULT NULL,
   `id_categoria` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id_produto`, `nome`, `preco`, `quant`, `marca`, `id_categoria`) VALUES
+(3, 'Chocolate', 10.80, 70, 'Nestle', 1),
+(4, 'Bolacha ao leite', 10.80, 70, 'Marilan', 1),
+(5, 'Queijo', 25.74, 15, 'Presidente', 1),
+(6, 'Doce de leite', 15.00, 10, 'Aviação', 1),
+(7, 'Leite', 6.56, 30, 'Jussara', 1),
+(8, 'Pasta de dente', 10.00, 30, 'Colgate', 2),
+(9, 'Sabonete líquido', 15.30, 10, 'Protex', 2),
+(10, 'Shampoo', 20.10, 6, 'Dove', 2),
+(11, 'Condicionador', 25.00, 6, 'Panteine', 2),
+(12, 'Cotonete', 5.00, 20, 'Jhonsons', 2),
+(13, 'Candida', 15.00, 15, 'Super candida', 3),
+(14, 'Detergente', 4.50, 15, 'Ype', 3),
+(15, 'Sabão em pó', 18.50, 25, 'Brilhante', 3),
+(16, 'Limpador', 14.00, 10, 'Cif', 3),
+(17, 'Bombril', 5.00, 18, 'BOMBRIL', 3),
+(18, 'Frango', 25.00, 10, 'Seara', 4),
+(19, 'Pão de queijo', 30.00, 10, 'Perdigão', 4),
+(20, 'Peixe', 23.40, 16, 'Qualitá', 4),
+(21, 'Queijo ralado', 13.00, 16, 'Presidente', 4),
+(22, 'Bife', 25.00, 14, 'Maturatta', 4),
+(23, 'Sardinha', 8.50, 10, 'Gomes da Costa', 5),
+(24, 'Salsicha', 11.20, 12, 'Anglo', 5),
+(25, 'Ervilha', 4.30, 17, 'Predilecta', 5),
+(26, 'Milho', 5.30, 11, 'Quero', 5),
+(27, 'Leite condensado Moça', 10.00, 13, 'Nestle', 5),
+(38, 'Linguiça', 20.00, 14, 'Aurora', 7),
+(39, 'Salsicha', 15.00, 12, 'Aurora', 7),
+(40, 'Peito de frango', 16.99, 18, 'Seara', 7),
+(41, 'Coxa de frango', 18.99, 10, 'Sadia', 7),
+(42, 'Picanha', 69.99, 13, 'Friboi', 7);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `categorias`
+-- Índices de tabela `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Índices para tabela `produtos`
+-- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id_produto`),
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -92,14 +128,14 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `produtos`
+-- Restrições para tabelas `produtos`
 --
 ALTER TABLE `produtos`
   ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`);
