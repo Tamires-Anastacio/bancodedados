@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Maio-2025 às 17:46
+-- Tempo de geração: 21-Maio-2025 às 17:49
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -58,21 +58,45 @@ CREATE TABLE `produtos` (
   `preco` decimal(10,2) DEFAULT NULL,
   `quant` int(11) DEFAULT NULL,
   `marca` varchar(255) DEFAULT NULL,
-  `id_categoria` int(11) DEFAULT NULL
+  `id_categoria` int(11) DEFAULT NULL,
+  `unidade_medida` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id_produto`, `nome`, `preco`, `quant`, `marca`, `id_categoria`) VALUES
-(1, 'Sabão em Pó', '30.50', 50, 'OMO', 1),
-(2, 'Detergente', '3.55', 10, 'Ype', 1),
-(3, 'Chocolate', '10.80', 70, 'Nestle', 1),
-(4, 'Bolacha ao leite', '10.80', 70, 'Marilan', 1),
-(5, 'Queijo', '25.74', 15, 'Presidente', 1),
-(6, 'Doce de leite', '15.00', 10, 'Aviação', 1),
-(7, 'Leite', '6.56', 30, 'Jussara', 1);
+INSERT INTO `produtos` (`id_produto`, `nome`, `preco`, `quant`, `marca`, `id_categoria`, `unidade_medida`) VALUES
+(3, 'Chocolate', '10.80', 70, 'Nestle', 1, 'g'),
+(4, 'Bolacha ao leite', '10.80', 70, 'Marilan', 1, 'g'),
+(5, 'Queijo', '25.74', 15, 'Presidente', 1, 'g'),
+(6, 'Doce de leite', '15.00', 10, 'Aviação', 1, 'g'),
+(7, 'Leite', '6.56', 30, 'Jussara', 1, 'g'),
+(8, 'Pasta de dente', '10.00', 30, 'Colgate', 2, 'un'),
+(9, 'Sabonete líquido', '15.30', 10, 'Protex', 2, 'un'),
+(10, 'Shampoo', '20.10', 6, 'Dove', 2, 'un'),
+(11, 'Condicionador', '25.00', 6, 'Panteine', 2, 'un'),
+(12, 'Cotonete', '5.00', 20, 'Jhonsons', 2, 'un'),
+(13, 'Candida', '15.00', 15, 'Super candida', 3, 'g'),
+(14, 'Detergente', '4.50', 15, 'Ype', 3, 'g'),
+(15, 'Sabão em pó', '18.50', 25, 'Brilhante', 3, 'g'),
+(16, 'Limpador', '14.00', 10, 'Cif', 3, 'g'),
+(17, 'Bombril', '5.00', 18, 'BOMBRIL', 3, 'g'),
+(18, 'Frango', '25.00', 10, 'Seara', 4, 'g'),
+(19, 'Pão de queijo', '30.00', 10, 'Perdigão', 4, 'g'),
+(20, 'Peixe', '23.40', 16, 'Qualitá', 4, 'g'),
+(21, 'Queijo ralado', '13.00', 16, 'Presidente', 4, 'g'),
+(22, 'Bife', '25.00', 14, 'Maturatta', 4, 'g'),
+(23, 'Sardinha', '8.50', 10, 'Gomes da Costa', 5, 'g'),
+(24, 'Salsicha', '11.20', 12, 'Anglo', 5, 'g'),
+(25, 'Ervilha', '4.30', 17, 'Predilecta', 5, 'g'),
+(26, 'Milho', '5.30', 11, 'Quero', 5, 'g'),
+(27, 'Leite condensado Moça', '10.00', 13, 'Nestle', 5, 'g'),
+(38, 'Linguiça', '20.00', 14, 'Aurora', 7, 'kg'),
+(39, 'Salsicha', '15.00', 12, 'Aurora', 7, 'kg'),
+(40, 'Peito de frango', '16.99', 18, 'Seara', 7, 'kg'),
+(41, 'Coxa de frango', '18.99', 10, 'Sadia', 7, 'kg'),
+(42, 'Picanha', '69.99', 13, 'Friboi', 7, 'kg');
 
 --
 -- Índices para tabelas despejadas
@@ -105,7 +129,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Restrições para despejos de tabelas
