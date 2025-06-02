@@ -1,0 +1,427 @@
+Microsoft Windows [versão 10.0.22631.5039]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\tamir>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 231
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| etecmcm2           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.002 sec)
+
+MariaDB [(none)]> use etecmcm2
+Database changed
+MariaDB [etecmcm2]> show tables
+    -> ;
++--------------------+
+| Tables_in_etecmcm2 |
++--------------------+
+| categorias         |
+| produtos           |
++--------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [etecmcm2]> select * from categorias
+    -> ;
++--------------+------------+
+| id_categoria | nome_cat   |
++--------------+------------+
+|            1 | Laticinios |
+|            2 | Higiene    |
+|            3 | Limpeza    |
+|            4 | Frios      |
+|            5 | Enlatados  |
+|            7 | Açougue    |
++--------------+------------+
+6 rows in set (0.001 sec)
+
+
+
+SELECTs Simples (iniciantes)
+
+
+1. Mostrar todos os produtos: 
+ 
+MariaDB [etecmcm2]> select * from produtos;
++------------+-----------------------+-------+-------+----------------+--------------+----------------+
+| id_produto | nome                  | preco | quant | marca          | id_categoria | unidade_medida |
++------------+-----------------------+-------+-------+----------------+--------------+----------------+
+|          3 | Chocolate             | 10.80 |    70 | Nestle         |            1 | g              |
+|          4 | Bolacha ao leite      | 10.80 |    70 | Marilan        |            1 | g              |
+|          5 | Queijo                | 25.74 |    15 | Presidente     |            1 | g              |
+|          6 | Doce de leite         | 15.00 |    10 | Aviação        |            1 | g              |
+|          7 | Leite                 |  6.56 |    30 | Jussara        |            1 | g              |
+|          8 | Pasta de dente        | 10.00 |    30 | Colgate        |            2 | un             |
+|          9 | Sabonete líquido      | 15.30 |    10 | Protex         |            2 | un             |
+|         10 | Shampoo               | 20.10 |     6 | Dove           |            2 | un             |
+|         11 | Condicionador         | 25.00 |     6 | Panteine       |            2 | un             |
+|         12 | Cotonete              |  5.00 |    20 | Jhonsons       |            2 | un             |
+|         13 | Candida               | 15.00 |    15 | Super candida  |            3 | g              |
+|         14 | Detergente            |  4.50 |    15 | Ype            |            3 | g              |
+|         15 | Sabão em pó           | 18.50 |    25 | Brilhante      |            3 | g              |
+|         16 | Limpador              | 14.00 |    10 | Cif            |            3 | g              |
+|         17 | Bombril               |  5.00 |    18 | BOMBRIL        |            3 | g              |
+|         18 | Frango                | 25.00 |    10 | Seara          |            4 | g              |
+|         19 | Pão de queijo         | 30.00 |    10 | Perdigão       |            4 | g              |
+|         20 | Peixe                 | 23.40 |    16 | Qualitá        |            4 | g              |
+|         21 | Queijo ralado         | 13.00 |    16 | Presidente     |            4 | g              |
+|         22 | Bife                  | 25.00 |    14 | Maturatta      |            4 | g              |
+|         23 | Sardinha              |  8.50 |    10 | Gomes da Costa |            5 | g              |
+|         24 | Salsicha              | 11.20 |    12 | Anglo          |            5 | g              |
+|         25 | Ervilha               |  4.30 |    17 | Predilecta     |            5 | g              |
+|         26 | Milho                 |  5.30 |    11 | Quero          |            5 | g              |
+|         27 | Leite condensado Moça | 10.00 |    13 | Nestle         |            5 | g              |
+|         38 | Linguiça              | 20.00 |    14 | Aurora         |            7 | kg             |
+|         39 | Salsicha              | 15.00 |    12 | Aurora         |            7 | kg             |
+|         40 | Peito de frango       | 16.99 |    18 | Seara          |            7 | kg             |
+|         41 | Coxa de frango        | 18.99 |    10 | Sadia          |            7 | kg             |
+|         42 | Picanha               | 69.99 |    13 | Friboi         |            7 | kg             |
++------------+-----------------------+-------+-------+----------------+--------------+----------------+
+30 rows in set (0.002 sec)
+
+
+1. Mostrar nome e preço dos produtos. 
+
+MariaDB [etecmcm2]> select nome, preco from produtos;
++-----------------------+-------+
+| nome                  | preco |
++-----------------------+-------+
+| Chocolate             | 10.80 |
+| Bolacha ao leite      | 10.80 |
+| Queijo                | 25.74 |
+| Doce de leite         | 15.00 |
+| Leite                 |  6.56 |
+| Pasta de dente        | 10.00 |
+| Sabonete líquido      | 15.30 |
+| Shampoo               | 20.10 |
+| Condicionador         | 25.00 |
+| Cotonete              |  5.00 |
+| Candida               | 15.00 |
+| Detergente            |  4.50 |
+| Sabão em pó           | 18.50 |
+| Limpador              | 14.00 |
+| Bombril               |  5.00 |
+| Frango                | 25.00 |
+| Pão de queijo         | 30.00 |
+| Peixe                 | 23.40 |
+| Queijo ralado         | 13.00 |
+| Bife                  | 25.00 |
+| Sardinha              |  8.50 |
+| Salsicha              | 11.20 |
+| Ervilha               |  4.30 |
+| Milho                 |  5.30 |
+| Leite condensado Moça | 10.00 |
+| Linguiça              | 20.00 |
+| Salsicha              | 15.00 |
+| Peito de frango       | 16.99 |
+| Coxa de frango        | 18.99 |
+| Picanha               | 69.99 |
++-----------------------+-------+
+30 rows in set (0.003 sec)
+
+
+1. Mostrar todos os produtos da marca "Sadia" ou a "que quiser":  
+
+MariaDB [etecmcm2]> select * from produtos where marca = 'Aurora';
++------------+----------+-------+-------+--------+--------------+----------------+
+| id_produto | nome     | preco | quant | marca  | id_categoria | unidade_medida |
++------------+----------+-------+-------+--------+--------------+----------------+
+|         38 | Linguiça | 20.00 |    14 | Aurora |            7 | kg             |
+|         39 | Salsicha | 15.00 |    12 | Aurora |            7 | kg             |
++------------+----------+-------+-------+--------+--------------+----------------+
+2 rows in set (0.003 sec)
+
+
+1. Mostrar produtos com preço maior que 20 reais:  
+
+MariaDB [etecmcm2]> select * from produtos where preco > 20;
++------------+---------------+-------+-------+------------+--------------+----------------+
+| id_produto | nome          | preco | quant | marca      | id_categoria | unidade_medida |
++------------+---------------+-------+-------+------------+--------------+----------------+
+|          5 | Queijo        | 25.74 |    15 | Presidente |            1 | g              |
+|         10 | Shampoo       | 20.10 |     6 | Dove       |            2 | un             |
+|         11 | Condicionador | 25.00 |     6 | Panteine   |            2 | un             |
+|         18 | Frango        | 25.00 |    10 | Seara      |            4 | g              |
+|         19 | Pão de queijo | 30.00 |    10 | Perdigão   |            4 | g              |
+|         20 | Peixe         | 23.40 |    16 | Qualitá    |            4 | g              |
+|         22 | Bife          | 25.00 |    14 | Maturatta  |            4 | g              |
+|         42 | Picanha       | 69.99 |    13 | Friboi     |            7 | kg             |
++------------+---------------+-------+-------+------------+--------------+----------------+
+8 rows in set (0.003 sec)
+
+
+1. Mostrar produtos com quantidade menor ou igual a 60:
+
+MariaDB [etecmcm2]> select * from produtos where quant <= 60;
++------------+-----------------------+-------+-------+----------------+--------------+----------------+
+| id_produto | nome                  | preco | quant | marca          | id_categoria | unidade_medida |
++------------+-----------------------+-------+-------+----------------+--------------+----------------+
+|          5 | Queijo                | 25.74 |    15 | Presidente     |            1 | g              |
+|          6 | Doce de leite         | 15.00 |    10 | Aviação        |            1 | g              |
+|          7 | Leite                 |  6.56 |    30 | Jussara        |            1 | g              |
+|          8 | Pasta de dente        | 10.00 |    30 | Colgate        |            2 | un             |
+|          9 | Sabonete líquido      | 15.30 |    10 | Protex         |            2 | un             |
+|         10 | Shampoo               | 20.10 |     6 | Dove           |            2 | un             |
+|         11 | Condicionador         | 25.00 |     6 | Panteine       |            2 | un             |
+|         12 | Cotonete              |  5.00 |    20 | Jhonsons       |            2 | un             |
+|         13 | Candida               | 15.00 |    15 | Super candida  |            3 | g              |
+|         14 | Detergente            |  4.50 |    15 | Ype            |            3 | g              |
+|         15 | Sabão em pó           | 18.50 |    25 | Brilhante      |            3 | g              |
+|         16 | Limpador              | 14.00 |    10 | Cif            |            3 | g              |
+|         17 | Bombril               |  5.00 |    18 | BOMBRIL        |            3 | g              |
+|         18 | Frango                | 25.00 |    10 | Seara          |            4 | g              |
+|         19 | Pão de queijo         | 30.00 |    10 | Perdigão       |            4 | g              |
+|         20 | Peixe                 | 23.40 |    16 | Qualitá        |            4 | g              |
+|         21 | Queijo ralado         | 13.00 |    16 | Presidente     |            4 | g              |
+|         22 | Bife                  | 25.00 |    14 | Maturatta      |            4 | g              |
+|         23 | Sardinha              |  8.50 |    10 | Gomes da Costa |            5 | g              |
+|         24 | Salsicha              | 11.20 |    12 | Anglo          |            5 | g              |
+|         25 | Ervilha               |  4.30 |    17 | Predilecta     |            5 | g              |
+|         26 | Milho                 |  5.30 |    11 | Quero          |            5 | g              |
+|         27 | Leite condensado Moça | 10.00 |    13 | Nestle         |            5 | g              |
+|         38 | Linguiça              | 20.00 |    14 | Aurora         |            7 | kg             |
+|         39 | Salsicha              | 15.00 |    12 | Aurora         |            7 | kg             |
+|         40 | Peito de frango       | 16.99 |    18 | Seara          |            7 | kg             |
+|         41 | Coxa de frango        | 18.99 |    10 | Sadia          |            7 | kg             |
+|         42 | Picanha               | 69.99 |    13 | Friboi         |            7 | kg             |
++------------+-----------------------+-------+-------+----------------+--------------+----------------+
+28 rows in set (0.003 sec)
+
+
+
+SELECTs com ORDER BY e LIMIT 
+
+6. Mostrar os 5 produtos mais baratos:
+
+MariaDB [etecmcm2]> select nome, preco from produtos order by preco asc limit 5;
++------------+-------+
+| nome       | preco |
++------------+-------+
+| Ervilha    |  4.30 |
+| Detergente |  4.50 |
+| Cotonete   |  5.00 |
+| Bombril    |  5.00 |
+| Milho      |  5.30 |
++------------+-------+
+5 rows in set (0.001 sec)
+
+
+7. Mostrar os 5 produtos mais caros: 
+
+MariaDB [etecmcm2]> select nome, preco from produtos order by preco desc limit 5;
++---------------+-------+
+| nome          | preco |
++---------------+-------+
+| Picanha       | 69.99 |
+| Pão de queijo | 30.00 |
+| Queijo        | 25.74 |
+| Condicionador | 25.00 |
+| Frango        | 25.00 |
++---------------+-------+
+5 rows in set (0.003 sec)
+
+
+SELECTs com funções agregadas 
+
+8. Contar o total de produtos cadastrados: 
+
+MariaDB [etecmcm2]> select count(*) as total_produtos from produtos;
++----------------+
+| total_produtos |
++----------------+
+|             30 |
++----------------+
+1 row in set (0.003 sec)
+
+
+9. Mostrar o preço médio dos produtos: 
+
+MariaDB [etecmcm2]> select avg(preco) as preco_medio from produtos;
++-------------+
+| preco_medio |
++-------------+
+|   16.599000 |
++-------------+
+1 row in set (0.001 sec)
+
+
+10. Mostrar o produto com maior quantidade em estoque: 
+
+MariaDB [etecmcm2]> select nome, quant from produtos order by quant desc limit 1;
++-----------+-------+
+| nome      | quant |
++-----------+-------+
+| Chocolate |    70 |
++-----------+-------+
+1 row in set (0.003 sec)
+
+
+SELECTs com JOIN
+
+
+11. Mostrar nome do produto e nome da categoria (usando JOIN):
+
+MariaDB [etecmcm2]> select p.nome, c.nome_cat from produtos p join categorias c on p.id_categoria = c.id_categoria;
++-----------------------+------------+
+| nome                  | nome_cat   |
++-----------------------+------------+
+| Chocolate             | Laticinios |
+| Bolacha ao leite      | Laticinios |
+| Queijo                | Laticinios |
+| Doce de leite         | Laticinios |
+| Leite                 | Laticinios |
+| Pasta de dente        | Higiene    |
+| Sabonete líquido      | Higiene    |
+| Shampoo               | Higiene    |
+| Condicionador         | Higiene    |
+| Cotonete              | Higiene    |
+| Candida               | Limpeza    |
+| Detergente            | Limpeza    |
+| Sabão em pó           | Limpeza    |
+| Limpador              | Limpeza    |
+| Bombril               | Limpeza    |
+| Frango                | Frios      |
+| Pão de queijo         | Frios      |
+| Peixe                 | Frios      |
+| Queijo ralado         | Frios      |
+| Bife                  | Frios      |
+| Sardinha              | Enlatados  |
+| Salsicha              | Enlatados  |
+| Ervilha               | Enlatados  |
+| Milho                 | Enlatados  |
+| Leite condensado Moça | Enlatados  |
+| Linguiça              | Açougue    |
+| Salsicha              | Açougue    |
+| Peito de frango       | Açougue    |
+| Coxa de frango        | Açougue    |
+| Picanha               | Açougue    |
++-----------------------+------------+
+30 rows in set (0.020 sec)
+
+
+12. Mostrar todos os produtos da categoria "Laticínios":
+
+MariaDB [etecmcm2]> select p.nome, p.marca, p.preco from produtos p join categorias c on p.id_categoria = c.id_categoria where c.nome_cat = 'Laticinios';
++------------------+------------+-------+
+| nome             | marca      | preco |
++------------------+------------+-------+
+| Chocolate        | Nestle     | 10.80 |
+| Bolacha ao leite | Marilan    | 10.80 |
+| Queijo           | Presidente | 25.74 |
+| Doce de leite    | Aviação    | 15.00 |
+| Leite            | Jussara    |  6.56 |
++------------------+------------+-------+
+5 rows in set (0.001 sec)
+
+
+13. Mostrar total de produtos por categoria:
+
+MariaDB [etecmcm2]> select c.nome_cat, count(*) as total_produtos from produtos p join categorias c on p.id_categoria = c.id_categoria group by c.nome_cat;
++------------+----------------+
+| nome_cat   | total_produtos |
++------------+----------------+
+| Açougue    |              5 |
+| Enlatados  |              5 |
+| Frios      |              5 |
+| Higiene    |              5 |
+| Laticinios |              5 |
+| Limpeza    |              5 |
++------------+----------------+
+6 rows in set (0.021 sec)
+
+
+DESAFIOS (INTERMEDIÁRIO)
+
+
+14. Mostrar os produtos com preço entre 10 e 20 reais:
+
+MariaDB [etecmcm2]> select * from produtos where preco between 10 and 20;
++------------+-----------------------+-------+-------+---------------+--------------+----------------+
+| id_produto | nome                  | preco | quant | marca         | id_categoria | unidade_medida |
++------------+-----------------------+-------+-------+---------------+--------------+----------------+
+|          3 | Chocolate             | 10.80 |    70 | Nestle        |            1 | g              |
+|          4 | Bolacha ao leite      | 10.80 |    70 | Marilan       |            1 | g              |
+|          6 | Doce de leite         | 15.00 |    10 | Aviação       |            1 | g              |
+|          8 | Pasta de dente        | 10.00 |    30 | Colgate       |            2 | un             |
+|          9 | Sabonete líquido      | 15.30 |    10 | Protex        |            2 | un             |
+|         13 | Candida               | 15.00 |    15 | Super candida |            3 | g              |
+|         15 | Sabão em pó           | 18.50 |    25 | Brilhante     |            3 | g              |
+|         16 | Limpador              | 14.00 |    10 | Cif           |            3 | g              |
+|         21 | Queijo ralado         | 13.00 |    16 | Presidente    |            4 | g              |
+|         24 | Salsicha              | 11.20 |    12 | Anglo         |            5 | g              |
+|         27 | Leite condensado Moça | 10.00 |    13 | Nestle        |            5 | g              |
+|         38 | Linguiça              | 20.00 |    14 | Aurora        |            7 | kg             |
+|         39 | Salsicha              | 15.00 |    12 | Aurora        |            7 | kg             |
+|         40 | Peito de frango       | 16.99 |    18 | Seara         |            7 | kg             |
+|         41 | Coxa de frango        | 18.99 |    10 | Sadia         |            7 | kg             |
++------------+-----------------------+-------+-------+---------------+--------------+----------------+
+15 rows in set (0.014 sec)
+
+
+15. Mostrar produtos cujo nome começa com 'P':
+
+MariaDB [etecmcm2]> select * from produtos where nome like 'p%';
++------------+-----------------+-------+-------+----------+--------------+----------------+
+| id_produto | nome            | preco | quant | marca    | id_categoria | unidade_medida |
++------------+-----------------+-------+-------+----------+--------------+----------------+
+|          8 | Pasta de dente  | 10.00 |    30 | Colgate  |            2 | un             |
+|         19 | Pão de queijo   | 30.00 |    10 | Perdigão |            4 | g              |
+|         20 | Peixe           | 23.40 |    16 | Qualitá  |            4 | g              |
+|         40 | Peito de frango | 16.99 |    18 | Seara    |            7 | kg             |
+|         42 | Picanha         | 69.99 |    13 | Friboi   |            7 | kg             |
++------------+-----------------+-------+-------+----------+--------------+----------------+
+5 rows in set (0.001 sec)
+
+
+16. Mostrar as marcas distintas cadastradas:
+
+MariaDB [etecmcm2]> select distinct marca from produtos;
++----------------+
+| marca          |
++----------------+
+| Nestle         |
+| Marilan        |
+| Presidente     |
+| Aviação        |
+| Jussara        |
+| Colgate        |
+| Protex         |
+| Dove           |
+| Panteine       |
+| Jhonsons       |
+| Super candida  |
+| Ype            |
+| Brilhante      |
+| Cif            |
+| BOMBRIL        |
+| Seara          |
+| Perdigão       |
+| Qualitá        |
+| Maturatta      |
+| Gomes da Costa |
+| Anglo          |
+| Predilecta     |
+| Quero          |
+| Aurora         |
+| Sadia          |
+| Friboi         |
++----------------+
+26 rows in set (0.002 sec)
+
